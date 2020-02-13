@@ -1,0 +1,26 @@
+{
+  "name": "css-particles",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "scripts": {
+    "dev": "parcel ./public/index.html"
+  },
+  "browserslist": [
+    "last 3 Chrome versions"
+  ],
+  "posthtml": {
+    "recognizeSelfClosing": true
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.1.1",
+    "parcel": "^1.12.4",
+    "sass": "^1.25.0",
+    "typescript": "^3.7.5",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "dependencies": {
+    "vue": "^2.6.11",
+    "vue-hot-reload-api": "^2.3.4"
+  }
+}
