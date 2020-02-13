@@ -11,6 +11,12 @@
 
 <script>
 export default {
+    props: {
+      container: {
+        type: HTMLElement,
+        default: () => document.documentElement
+      }
+    },
     data () {
         return {
             position: {
@@ -24,10 +30,11 @@ export default {
         }
     },
     mounted () {
-        window.addEventListener('mousemove', this.trackMousePosition)
+        this.container.addEventListener('pointermove', this.trackMousePosition)
+        this.container.style.touchAction = 'none'
     },
     beforeDestroy () {
-        window.removeEventListener('mousemove', this.trackMousePosition)
+        this.container.removeEventListener('pointermove', this.trackMousePosition)
     }
 }
 </script>
@@ -35,6 +42,7 @@ export default {
 <style lang="scss" scoped>
 .mouse-transform {
     position: absolute;
+    touch-action: none;
     left: 0;
     top: 0;
 }

@@ -32,7 +32,7 @@ export default {
       default: '#000'
     },
     lifetime: {
-      type: Number,
+      type: [Number, String],
       default: 10
     },
     poolSize: {
@@ -44,11 +44,11 @@ export default {
       default: 'square'
     },
     xSpread: {
-      type: Number,
+      type: [Number, String],
       default: 8
     },
     ySpread: {
-      type: Number,
+      type: [Number, String],
       default: 5
     },
   },
