@@ -70,6 +70,7 @@ export default {
             this.$forceUpdate()
           }
         }
+        await frame()
       }
     },
     async renderLoop () {
@@ -85,7 +86,6 @@ export default {
         }
       }
 
-      this.$forceUpdate()
       this.renderLoop()
     },
   },
