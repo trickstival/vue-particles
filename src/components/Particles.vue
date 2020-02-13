@@ -35,19 +35,27 @@ export default {
       type: Number,
       default: 10
     },
-    poolCount: {
+    poolSize: {
       type: Number,
-      default: 10
+      default: 50
     },
     shape: {
       type: String,
       default: 'square'
-    }
+    },
+    xSpread: {
+      type: Number,
+      default: 8
+    },
+    ySpread: {
+      type: Number,
+      default: 5
+    },
   },
   computed: {
     particles () {
       const particles = []
-      for (let i = 0; i < this.poolCount; i++) {
+      for (let i = 0; i < this.poolSize; i++) {
         const particle = Vue.observable(new Particle())
         particles.push(particle)
       }
@@ -77,8 +85,8 @@ export default {
       await frame()
 
       for (const particle of this.aliveParticles) {
-        particle.translation.x += (Math.random() -.5) * 8
-        particle.translation.y -= Math.random() * 5
+        particle.translation.x += (Math.random() -.5) * this.xSpread
+        particle.translation.y -= Math.random() * this.ySpread
         particle.currentLifetime += Math.random() / 10 + .1
         particle.opacity = 1 - (particle.currentLifetime / this.lifetime)
         if (particle.currentLifetime >= this.lifetime) {

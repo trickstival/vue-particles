@@ -14,6 +14,8 @@
             class="mouse-particles"
           />
           <particles
+            lifetime="20"
+            x-spread="10"
             class="mouse-particles"
           />
           <particles
