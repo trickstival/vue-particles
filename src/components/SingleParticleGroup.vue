@@ -19,7 +19,7 @@ export default {
     },
     mounted () {
         for (const child of this.$children) {
-            child.delay = Math.random() * 2
+            child.delay = Math.random() * 3
         }
     }
 }

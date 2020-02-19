@@ -26,15 +26,15 @@ export default {
         },
         lifetime: {
             type: Number,
-            default: 1000
+            default: 2000
         },
         entropy: {
             type: Number,
-            default: 10
+            default: 3
         },
         stepSpread: {
             type: Number,
-            default: 60
+            default: 100
         }
     },
     data () {
@@ -59,6 +59,7 @@ export default {
                     this.currentStep = -2
                     this.trajectory = []
                     await this.$nextTick()
+                    this.delay = Math.random() * 3
                     this.generateNewTrajectory()
                 }
             }
