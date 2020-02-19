@@ -1,57 +1,14 @@
 <template>
   <div
-    @mousedown="activateParticles"
-    @mouseup="showParticles = false"
     class="draw-frame"
   >
-      <mouse-transform>
-          <particles
-            class="mouse-particles"
-          />
-      </mouse-transform>
-      <footer class="footer">
-          <particles
-            class="mouse-particles"
-          />
-          <particles
-            lifetime="20"
-            x-spread="10"
-            class="mouse-particles"
-          />
-          <particles
-            class="mouse-particles"
-          />
-      </footer>
+      <slot />
   </div>
 </template>
 
 <script>
-import Particles from './Particles'
-import MouseTransform from './MouseTransform'
-
 export default {
     name: 'DrawingFrame',
-    components: {
-        Particles,
-        MouseTransform
-    },
-    data () {
-        return {
-            particlesPosition: {
-                x: 0,
-                y: 0
-            },
-            showParticles: false
-        }
-    },
-    methods: {
-        activateParticles (event) {
-            this.showParticles = true
-        },
-        trackMousePosition (event) {
-            
-        }
-    }
 }
 </script>
 

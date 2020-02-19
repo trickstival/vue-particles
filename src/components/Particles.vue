@@ -17,7 +17,7 @@
 
 <script>
 import { frame, waitFor } from '../utils/frame.ts'
-import { Particle } from '../particleSystem/Particle'
+import { Particle } from '../particleSystem/PositionParticle'
 import Shape from './Shape'
 import Vue from 'vue'
 

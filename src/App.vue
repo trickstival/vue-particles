@@ -1,17 +1,13 @@
 <template>
   <div id="app">
-      <drawing-frame></drawing-frame>
+      <router-view></router-view>
   </div>
 </template>
 
 <script>
-import DrawingFrame from './components/DrawingFrame'
 
 export default {
     name: 'App',
-    components: {
-        DrawingFrame
-    }
 }
 </script>
 
