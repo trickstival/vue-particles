@@ -49,9 +49,12 @@ export default {
         drawCircle () {
             const { ctx } = this
             ctx.beginPath()
+            ctx.lineWidth = 10
             ctx.arc(X_CENTER, Y_CENTER, CIRCLE_RADIUS, 0, 2 * Math.PI)
             ctx.clip()
             ctx.stroke()
+
+            ctx.font = '22px Arial'
         },
         clearCircle () {
             const { ctx } = this
@@ -93,6 +96,11 @@ export default {
             ctx.moveTo(X_CENTER, Y_CENTER)
             ctx.lineTo(angleEndX, angleEndY)
             ctx.stroke()
+            ctx.fillText('Sin: ' + sin.toFixed(2), 10, 10)
+
+            // Sin and Cos text
+            ctx.fillText('Sin: ' + sin.toFixed(2), X_CENTER, angleEndY - 20 * sin)
+            ctx.fillText('Cos: ' + cos.toFixed(2), angleEndX - 20 * (cos + 2), Y_CENTER)
         },
         drawAxis () {
             const { ctx, angle } = this
