@@ -20,6 +20,11 @@ export default new Router({
             path: '/single',
             name: 'singleParticles',
             component: () => import('./views/SingleParticles.vue')
+        },
+        {
+            path: '/trigonometry',
+            name: 'trigonometry',
+            component: () => import('./views/Trigonometry.vue')
         }
     ]
 })
