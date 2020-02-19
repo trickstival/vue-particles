@@ -1,9 +1,11 @@
 <template>
   <drawing-frame>
     <single-particle-group :count="10">
-      <single-particle>
-        Particula
-      </single-particle>
+      <template #default>
+        <single-particle>
+          Particula
+        </single-particle>
+      </template>
     </single-particle-group>
   </drawing-frame>
 </template>

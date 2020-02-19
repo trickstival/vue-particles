@@ -14,8 +14,13 @@ export default {
     props: {
         count: {
             type: Number,
-            default: 1
+            default: 10
         },
+    },
+    mounted () {
+        for (const child of this.$children) {
+            child.delay = Math.random() * 2
+        }
     }
 }
 </script>
