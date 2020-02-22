@@ -25,6 +25,11 @@ export default new Router({
             path: '/trigonometry',
             name: 'trigonometry',
             component: () => import('./views/Trigonometry.vue')
+        },
+        {
+            path: '/gl-cube',
+            name: 'glCube',
+            component: () => import('./views/GLCube.vue')
         }
     ]
 })
