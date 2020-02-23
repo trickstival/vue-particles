@@ -1,4 +1,5 @@
 import { Renderer } from '../engine/Renderer'
+import { generateRandomTriangles, scale } from '../utils/glUtils'
 
 export default (canvas: HTMLCanvasElement) => {
     const renderer = new Renderer({
@@ -13,18 +14,31 @@ export default (canvas: HTMLCanvasElement) => {
 
     renderer.createProgram()
 
-    // Clear the canvas
-    gl.clear(gl.COLOR_BUFFER_BIT)
     const { shapeDrawer } = renderer
-    shapeDrawer
-        .withAttribute('a_position')
-        .drawShape([
-            0, 0,
-            0, 0.5,
-            0.7, 0,
 
-            0, -0.5,
-            0.5, -0.5,
-            0, -0.9
-        ])
+    const positionDrawer = shapeDrawer.withAttribute('a_position')
+
+    const indices = [
+        0, 1, 2,
+        2, 1, 3
+    ]
+
+    // const vertexPositions = [
+    //     0, 0,
+    //     0, 0.5,
+    //     0.7, 0,
+    // ]
+
+    const vertexPositions = generateRandomTriangles(4)
+    console.log(vertexPositions)
+
+    let orientation = 1
+
+    renderer.loop(() => {
+        gl.clear(gl.COLOR_BUFFER_BIT)
+        
+        positionDrawer
+            // .drawIndices(indices)
+            .drawShape(vertexPositions, true)
+    })
 }

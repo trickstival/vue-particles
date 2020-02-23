@@ -1,5 +1,6 @@
 import { getShaderSources } from "./ShaderSources.static"
 import { ShapeDrawer } from "./ShapeDrawer"
+import { frame } from '../utils/frame'
 
 interface RendererOptions {
     canvas: HTMLCanvasElement
@@ -66,5 +67,14 @@ export class Renderer {
             }
         }
         return shaders
+    }
+
+    async loop (callback: Function) {
+        while (true) {
+            await frame()
+            if ((await callback()) === false) {
+                return
+            }
+        }
     }
 }

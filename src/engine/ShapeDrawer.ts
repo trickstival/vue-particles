@@ -15,7 +15,19 @@ class DrawCallInstance {
         
     }
 
-    drawShape (positions: number[]) {
+    drawIndices (indices: number[]) {
+        const { gl } = this.shapeDrawer.renderer
+        const indexBuffer = gl.createBuffer()
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer)
+        gl.bufferData(
+            gl.ELEMENT_ARRAY_BUFFER,
+            new Uint16Array(indices),
+            gl.STATIC_DRAW
+        )
+        return this
+    }
+
+    drawShape (positions: number[], arrays = false) {
         const { gl } = this.shapeDrawer.renderer
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW)
 
@@ -25,8 +37,11 @@ class DrawCallInstance {
         const stride = 0        // 0 = move forward size * sizeof(type) each iteration to get the next position
         const offset = 0        // start at the beginning of the buffer
         gl.vertexAttribPointer(this.attributeLocation, size, type, normalize, stride, offset)
-        console.log(positions.length)
-        gl.drawArrays(gl.TRIANGLES, offset, positions.length / size)
+        if (arrays) {
+            gl.drawArrays(gl.TRIANGLES, offset, positions.length / size)
+        } else {
+            gl.drawElements(gl.TRIANGLES, positions.length / size, gl.UNSIGNED_SHORT, 0)
+        }
     }
 }
 
