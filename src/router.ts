@@ -30,6 +30,11 @@ export default new Router({
             path: '/gl-triangles',
             name: 'glTriangles',
             component: () => import('./views/GLTriangles.vue')
+        },
+        {
+            path: '/gl-sin',
+            name: 'glSin',
+            component: () => import('./views/GLSin.vue')
         }
     ]
 })

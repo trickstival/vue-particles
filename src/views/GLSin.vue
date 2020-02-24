@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import initGlCube from '../particleSystem/GLTriangles'
+import initGlSin from '../particleSystem/GLSin'
 
 export default {
     data () {
@@ -21,7 +21,7 @@ export default {
         }
     },
     mounted () {
-        if (initGlCube(this.$refs.canvas) === false) {
+        if (initGlSin(this.$refs.canvas) === false) {
             this.noWebGL = true
         }
     }

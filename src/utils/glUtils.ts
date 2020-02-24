@@ -25,3 +25,15 @@ export function generateRandomTriangles(count: number) {
 export function scale (positions: number[], scale: number) {
     return positions.map(position => position * scale)
 }
+
+export function sins (spacing = .1) {
+    const sins = []
+    const max = Math.PI * 2
+    for (let i = 0; i <= max; i += spacing) {
+        sins.push(Math.sin(i))
+    }
+
+    sins.push(0)
+
+    return sins
+}
