@@ -36,9 +36,9 @@ export default (canvas: HTMLCanvasElement) => {
         vertexPositions = generateRandomTriangles(triangleCount)
 
         if (triangleCount <= minCount) {
-            stepFactor = 100
+            stepFactor = 50
         } else if (triangleCount >= maxCount) {
-            stepFactor = -100
+            stepFactor = -50
         }
 
         triangleCount += stepFactor
