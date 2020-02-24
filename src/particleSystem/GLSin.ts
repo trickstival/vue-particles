@@ -19,29 +19,44 @@ export default (canvas: HTMLCanvasElement) => {
 
     gl.clear(gl.COLOR_BUFFER_BIT)
 
-    const sinsArray = sins()
-    let curX = -1
-    let idx = 0
-
-    const buffer = []
+    const tracks = [
+        track(sins(.01, { translateY: 15 })),
+        track(sins(.03, { translateY: 8 })),
+        track(sins(.10, { translateY: 0., amplitude: 4 })),
+        track(sins(.15, { translateY: -8. })),
+        track(sins(.25, { translateY: -12. })),
+        track(sins(1, { translateY: -16. })),
+    ]
     
     renderer.loop(() => {
         gl.clear(gl.COLOR_BUFFER_BIT)
-        buffer.push(curX, getSinBufferFor(sinsArray))
-        positionDrawer.drawShape(buffer, true)
+        for (const track of tracks) {
+            track()
+        }
     })
-
-    function getSinBufferFor (sinsArray: number[]) {
-        idx++
-        if (idx >= sinsArray.length) {
-            idx = 0
-        } else {
-            curX += .001
+    
+    function track (sinsArray: number[]) {
+        let idx = 0
+        let curX = -1
+        let buffer = []
+        const buffers = [buffer]
+        return () => {
+            idx++
+            if (idx >= sinsArray.length) {
+                idx = 0
+            } else {
+                curX += .002
+            }
+            if (curX >= 1) {
+                curX = -1
+                buffer = []
+                buffers.push(buffer)
+            }
+            buffer.push(curX, sinsArray[idx] * .05)
+            for (const buffer of buffers) {
+                positionDrawer.drawShape(buffer, true)
+            }
+            return { idx, curX }
         }
-        if (curX >= 1) {
-            curX = -1
-        }
-
-        return sinsArray[idx] * .05
     }
 }

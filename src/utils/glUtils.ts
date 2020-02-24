@@ -26,14 +26,14 @@ export function scale (positions: number[], scale: number) {
     return positions.map(position => position * scale)
 }
 
-export function sins (spacing = .1) {
+export function sins (spacing = .1, { amplitude = 1, translateY = 0 } = {}) {
     const sins = []
     const max = Math.PI * 2
     for (let i = 0; i <= max; i += spacing) {
-        sins.push(Math.sin(i))
+        sins.push(Math.sin(i) * amplitude + translateY)
     }
 
-    sins.push(0)
+    sins.push(0 + translateY)
 
     return sins
 }
