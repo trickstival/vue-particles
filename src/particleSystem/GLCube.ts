@@ -29,7 +29,7 @@ export default (canvas: HTMLCanvasElement) => {
     //     0.7, 0,
     // ]
 
-    const vertexPositions = generateRandomTriangles(4)
+    const vertexPositions = generateRandomTriangles(400)
     console.log(vertexPositions)
 
     let orientation = 1
