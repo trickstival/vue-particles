@@ -5,6 +5,7 @@ interface VAO {
 }
 
 class DrawCallInstance {
+    public drawType = WebGL2RenderingContext.TRIANGLES
     constructor (
         private shapeDrawer: ShapeDrawer,
         private attributeLocation: number
@@ -38,9 +39,9 @@ class DrawCallInstance {
         const offset = 0        // start at the beginning of the buffer
         gl.vertexAttribPointer(this.attributeLocation, size, type, normalize, stride, offset)
         if (arrays) {
-            gl.drawArrays(gl.TRIANGLES, offset, positions.length / size)
+            gl.drawArrays(this.drawType, offset, positions.length / size)
         } else {
-            gl.drawElements(gl.TRIANGLES, positions.length / size, gl.UNSIGNED_SHORT, 0)
+            gl.drawElements(this.drawType, positions.length / size, gl.UNSIGNED_SHORT, 0)
         }
     }
 }

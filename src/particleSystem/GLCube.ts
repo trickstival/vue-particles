@@ -26,7 +26,7 @@ export default (canvas: HTMLCanvasElement) => {
     const minCount = 10
     const maxCount = 5000
 
-    let triangleCount = 5000
+    let triangleCount = 10000
     let stepFactor = -1
 
     let vertexPositions = generateRandomTriangles(triangleCount)
@@ -37,6 +37,7 @@ export default (canvas: HTMLCanvasElement) => {
 
         if (triangleCount <= minCount) {
             stepFactor = 50
+            randomShape()
         } else if (triangleCount >= maxCount) {
             stepFactor = -50
         }
@@ -47,4 +48,12 @@ export default (canvas: HTMLCanvasElement) => {
             // .drawIndices(indices)
             .drawShape(vertexPositions, true)
     })
+
+    function randomShape () {
+        if (Math.random() > .5) {
+            positionDrawer.drawType = gl.LINES
+            return
+        }
+        positionDrawer.drawType = gl.TRIANGLES
+    }
 }
