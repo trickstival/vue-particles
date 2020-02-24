@@ -18,24 +18,30 @@ export default (canvas: HTMLCanvasElement) => {
 
     const positionDrawer = shapeDrawer.withAttribute('a_position')
 
-    const indices = [
-        0, 1, 2,
-        2, 1, 3
-    ]
-
-    // const vertexPositions = [
-    //     0, 0,
-    //     0, 0.5,
-    //     0.7, 0,
+    // const indices = [
+    //     0, 1, 2,
+    //     2, 1, 3
     // ]
 
-    const vertexPositions = generateRandomTriangles(400)
-    console.log(vertexPositions)
+    const minCount = 10
+    const maxCount = 5000
 
-    let orientation = 1
+    let triangleCount = 5000
+    let stepFactor = -1
+
+    let vertexPositions = generateRandomTriangles(triangleCount)
 
     renderer.loop(() => {
         gl.clear(gl.COLOR_BUFFER_BIT)
+        vertexPositions = generateRandomTriangles(triangleCount)
+
+        if (triangleCount <= minCount) {
+            stepFactor = 100
+        } else if (triangleCount >= maxCount) {
+            stepFactor = -100
+        }
+
+        triangleCount += stepFactor
         
         positionDrawer
             // .drawIndices(indices)
