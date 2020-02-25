@@ -11,5 +11,6 @@ It's still a work in progress and Pull Requests are welcome!
 - [Particles with multiple render loops and DOM transform position](https://vue-css-particles.netlify.com/#/single)
 - [Trigonometry](https://vue-css-particles.netlify.com/#/trigonometry)
 - [WebGL Triangle flicker](https://vue-css-particles.netlify.com/#/gl-triangles)
+- [Deadly Sins](https://vue-css-particles.netlify.com/#/gl-sin)
 
 Check out the [demo](https://vue-css-particles.netlify.com)

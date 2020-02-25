@@ -35,6 +35,11 @@ export default new Router({
             path: '/gl-sin',
             name: 'glSin',
             component: () => import('./views/GLSin.vue')
+        },
+        {
+            path: '/gl-smoke',
+            name: 'glSmoke',
+            component: () => import('./views/GLSmoke.vue')
         }
     ]
 })

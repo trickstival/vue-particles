@@ -22,6 +22,16 @@ const SHADER_SOURCES: Record<string, ProgramSource> = {
             type: VERTEX_SHADER,
             source: readFileSync(__dirname + '/../shaders/glCube/cubeVertex.shader', 'utf-8')
         }
+    },
+    GL_SMOKE: {
+        FRAGMENT_SHADER: {
+            type: FRAGMENT_SHADER,
+            source: readFileSync(__dirname + '/../shaders/glSmoke/smokeFragment.shader', 'utf-8')
+        },
+        VERTEX_SHADER: {
+            type: VERTEX_SHADER,
+            source: readFileSync(__dirname + '/../shaders/glCube/cubeVertex.shader', 'utf-8')
+        }
     }
 }
 

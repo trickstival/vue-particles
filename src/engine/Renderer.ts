@@ -62,8 +62,9 @@ export class Renderer {
 
             const success = this.gl.getShaderParameter(shader, gl.COMPILE_STATUS)
             if (!success) {
+                const message = gl.getShaderInfoLog(shader)
                 gl.deleteShader(shader)
-                throw new Error('Shader could not be compiled: ' + gl.getShaderInfoLog(shader))
+                throw new Error('Shader could not be compiled: ' + message)
             }
         }
         return shaders

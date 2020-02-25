@@ -6,6 +6,7 @@ interface VAO {
 
 class DrawCallInstance {
     public drawType = WebGL2RenderingContext.TRIANGLES
+    private currentIndices: number[]
     constructor (
         private shapeDrawer: ShapeDrawer,
         private attributeLocation: number
@@ -19,6 +20,7 @@ class DrawCallInstance {
     drawIndices (indices: number[]) {
         const { gl } = this.shapeDrawer.renderer
         const indexBuffer = gl.createBuffer()
+        this.currentIndices = indices
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer)
         gl.bufferData(
             gl.ELEMENT_ARRAY_BUFFER,
@@ -41,7 +43,8 @@ class DrawCallInstance {
         if (arrays) {
             gl.drawArrays(this.drawType, offset, positions.length / size)
         } else {
-            gl.drawElements(this.drawType, positions.length / size, gl.UNSIGNED_SHORT, 0)
+            console.log(positions.length, size)
+            gl.drawElements(this.drawType, this.currentIndices.length, gl.UNSIGNED_SHORT, 0)
         }
     }
 }
